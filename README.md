@@ -78,6 +78,30 @@ In Pyan3, the analyzer was ported from `compiler` ([good riddance](https://stack
 
     pip install pyan3
 
+## Development setup
+
+This repository uses [uv](https://github.com/astral-sh/uv) for local builds and releases.
+
+```bash
+# install uv if needed
+curl -LsSf https://astral.sh/uv/install.sh | sh
+
+# set up a development environment
+uv pip install --editable .[dev]
+
+# run the CLI locally
+uv run pyan3 --help
+
+# build distribution artifacts
+uv build
+```
+
+Helper scripts are provided for common workflows:
+
+- `./makedist.sh` – builds wheels and source distributions via `uv build`.
+- `./uploaddist.sh <version>` – publishes artifacts, preferring `uv publish` when available.
+- `./test-python-versions.sh` – smoke-tests the package across the Python interpreters detected on your system.
+
 # Usage
 
 See `pyan3 --help`.
